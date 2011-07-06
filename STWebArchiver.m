@@ -102,8 +102,10 @@
 		results = [NSMutableArray arrayWithCapacity:nodes->nodeNr];
 		for (int i = 0; i < nodes->nodeNr; i++) {
 			xmlNodePtr node = nodes->nodeTab[i];
-			NSString *attribute = [NSString stringWithUTF8String:(char *)xmlGetProp(node, (xmlChar *)[attributeName UTF8String])];
-			[results addObject:attribute];
+			char *attributeChars = (char *)xmlGetProp(node, (xmlChar *)[attributeName UTF8String]);
+			NSString *attributeString = [NSString stringWithUTF8String:attributeChars];
+			xmlFree(attributeChars);
+			[results addObject:attributeString];
 		}
 	}
 	xmlXPathFreeObject(xpathObject);

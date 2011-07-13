@@ -8,17 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		2458496013C34FC50028A863 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2458495F13C34FC50028A863 /* libxml2.dylib */; };
-		2458496513C350B80028A863 /* STWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 2458496413C350B80028A863 /* STWebArchiver.m */; };
 		246BDE6413CD32BB007FD3EE /* STWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 2458496413C350B80028A863 /* STWebArchiver.m */; };
 		246BDE6513CD32BC007FD3EE /* STWebArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 2458496313C350B80028A863 /* STWebArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		246BDE6713CD32DC007FD3EE /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2458495F13C34FC50028A863 /* libxml2.dylib */; };
 		246BDE6813CD32DD007FD3EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97325FDCFA39411CA2CEA /* Foundation.framework */; };
+		246BDE9813CD360A007FD3EE /* STWebArchiver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246BDE5D13CD325E007FD3EE /* STWebArchiver.framework */; };
+		246BDEA013CD3616007FD3EE /* STWebArchiver.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 246BDE5D13CD325E007FD3EE /* STWebArchiver.framework */; };
 		256AC3DA0F4B6AC300CF3369 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppController.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		246BDEA213CD3641007FD3EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 246BDE5C13CD325E007FD3EE;
+			remoteInfo = Framework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		246BDEA113CD3635007FD3EE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				246BDEA013CD3616007FD3EE /* STWebArchiver.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -55,7 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				2458496013C34FC50028A863 /* libxml2.dylib in Frameworks */,
+				246BDE9813CD360A007FD3EE /* STWebArchiver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,10 +204,12 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				246BDEA113CD3635007FD3EE /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				246BDEA313CD3641007FD3EE /* PBXTargetDependency */,
 			);
 			name = STWebArchiver;
 			productInstallPath = "$(HOME)/Applications";
@@ -251,11 +276,18 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* AppController.m in Sources */,
-				2458496513C350B80028A863 /* STWebArchiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		246BDEA313CD3641007FD3EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 246BDE5C13CD325E007FD3EE /* Framework */;
+			targetProxy = 246BDEA213CD3641007FD3EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -344,7 +376,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = STWebArchiver_Prefix.pch;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "STWebArchiver-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = STWebArchiver;
@@ -359,7 +391,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = STWebArchiver_Prefix.pch;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "STWebArchiver-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = STWebArchiver;

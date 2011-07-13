@@ -21,7 +21,7 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "STWebArchiver.h"
+#import <STWebArchiver/STWebArchiver.h>
 
 @interface AppController : NSObject <STWebArchiverDelegate> {
 }

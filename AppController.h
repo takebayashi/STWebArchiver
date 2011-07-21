@@ -23,10 +23,9 @@
 #import <Cocoa/Cocoa.h>
 #import <STWebArchiver/STWebArchiver.h>
 
-@interface AppController : NSObject <STWebArchiverDelegate> {
+@interface AppController : NSObject {
 }
 
 - (void)archive:(id)sender;
-- (void)archiver:(STWebArchiver *)archiver didFinishArchiving:(NSData *)archivedData;
 
 @end

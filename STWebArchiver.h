@@ -22,22 +22,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol STWebArchiverDelegate;
-
 @interface STWebArchiver : NSObject {
-	id <STWebArchiverDelegate> delegate;
 }
-
-@property (assign) id <STWebArchiverDelegate> delegate;
 
 - (void)archiveHTMLData:(NSData *)aData
 		   textEncoding:(NSString *)anEncoding
-				baseURL:(NSURL *)anURL;
-
-@end
-
-@protocol STWebArchiverDelegate <NSObject>
-
-- (void)archiver:(STWebArchiver *)archiver didFinishArchiving:(NSData *)archivedData;
+				baseURL:(NSURL *)anURL
+        completionBlock:(void (^)(NSData *))completion;
 
 @end

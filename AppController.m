@@ -27,15 +27,13 @@
 - (void)archive:(id)sender {
 	NSURL *sourceUrl = [NSURL URLWithString:[sender stringValue]];
 	STWebArchiver *archiver = [[STWebArchiver alloc] init];
-	archiver.delegate = self;
 	[archiver archiveHTMLData:[NSData dataWithContentsOfURL:sourceUrl]
 				 textEncoding:@"UTF-8"
-					  baseURL:sourceUrl];
-}
-
-- (void)archiver:(STWebArchiver *)archiver didFinishArchiving:(NSData *)archivedData {
-	[archivedData writeToFile:@"/Users/shun/Desktop/SampleWebArchive.webarchive" atomically:YES];
-	[archiver release];
+					  baseURL:sourceUrl
+              completionBlock:^(NSData *data) {
+                  [data writeToFile:@"/Users/shun/Desktop/SampleWebArchive.webarchive" atomically:YES];
+                  [archiver release];
+              }];
 }
 
 @end

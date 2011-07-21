@@ -35,11 +35,10 @@
 
 @implementation STWebArchiver
 
-@synthesize delegate;
-
 - (void)archiveHTMLData:(NSData *)aData
 		   textEncoding:(NSString *)anEncoding
-				baseURL:(NSURL *)anURL {
+				baseURL:(NSURL *)anURL
+        completionBlock:(void (^)(NSData *))completion {
 	htmlDocPtr doc = htmlParseDoc((xmlChar *)[aData bytes], [anEncoding UTF8String]);
 	NSArray *pathsForImagesAndScripts = [self valueForAttributeName:@"src" withEvaluatingXPath:@"//script[@src]|//img[@src]" inDocument:doc];
 	NSArray *pathsForStylesheets = [self valueForAttributeName:@"href" withEvaluatingXPath:@"//link[@rel='stylesheet'][@href]" inDocument:doc];
@@ -84,9 +83,10 @@
 		[mainResource setObject:anEncoding forKey:@"WebResourceTextEncodingName"];
 		[mainResource setObject:[anURL absoluteString] forKey:@"WebResourceURL"];
 		[archiveSource setObject:mainResource forKey:@"WebMainResource"];
-		[delegate archiver:self didFinishArchiving:[NSPropertyListSerialization dataFromPropertyList:archiveSource
-																							  format:NSPropertyListBinaryFormat_v1_0
-																					errorDescription:NULL]];
+		NSData *webArchive = [NSPropertyListSerialization dataFromPropertyList:archiveSource
+                                                                        format:NSPropertyListBinaryFormat_v1_0
+                                                              errorDescription:NULL];
+        completion(webArchive);
 	});
 	xmlFreeDoc(doc);
 }
